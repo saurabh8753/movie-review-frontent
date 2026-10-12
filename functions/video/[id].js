@@ -1,5 +1,5 @@
 const API = "https://movie-review-worker.jaanewale6.workers.dev";
-const SITE_TITLE = "📱 Tech & Gadget Reviews"; // ← keep in sync with index.html
+const SITE_TITLE = "🎬 Movie Review"; // ← keep in sync with index.html
 
 export async function onRequest(context) {
   const { params } = context;

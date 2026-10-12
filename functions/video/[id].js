@@ -1,4 +1,4 @@
-const API = "https://tech-worker.YOUR_SUBDOMAIN.workers.dev";
+const API = "https://movie-review-worker.jaanewale6.workers.dev";
 const SITE_TITLE = "📱 Tech & Gadget Reviews"; // ← keep in sync with index.html
 
 export async function onRequest(context) {

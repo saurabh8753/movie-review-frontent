@@ -38,7 +38,7 @@ export async function onRequest(context) {
   iframe { width:100%; height:450px; border:0; border-radius:8px; }
   h1 { font-size:20px; }
   a.back { color:#0078ff; text-decoration:none; }
-  .ad-slot { max-width:800px; margin:16px auto; text-align:center; padding:16px; background:#181818; border-radius:8px; }
+  .ad-slot { max-width:800px; margin:16px auto; text-align:center; padding:16px; background:#181818; border-radius:8px; min-height:100px; overflow:hidden; }
 </style>
 </head>
 <body>
@@ -47,7 +47,10 @@ export async function onRequest(context) {
   <h1>${video.title}</h1>
   <p>${video.channel_title}</p>
   <iframe id="videoFrame" src="https://www.youtube.com/embed/${videoId}" allowfullscreen loading="lazy"></iframe>
-  <div class="ad-slot">Ad Space</div>
+  <div class="ad-slot">
+    <div id="container-4f0bfeaabac995fec9ba44ec0ea68118"></div>
+    <script async="async" data-cfasync="false" src="https://pl29064745.profitableratecpmnetwork.com/4f0bfeaabac995fec9ba44ec0ea68118/invoke.js"></script>
+  </div>
 </div>
 <script>
   window.addEventListener("load", () => {

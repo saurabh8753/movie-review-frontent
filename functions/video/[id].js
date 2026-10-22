@@ -35,7 +35,8 @@ export async function onRequest(context) {
 <style>
   body { background:#0f0f0f; color:#fff; font-family:sans-serif; margin:0; padding:20px; }
   .player { max-width:800px; margin:0 auto; }
-  iframe { width:100%; height:450px; border:0; border-radius:8px; }
+  #player-container { position: relative; width:100%; height:450px; }
+  iframe { width:100%; height:100%; border:0; border-radius:8px; }
   h1 { font-size:20px; }
   a.back { color:#0078ff; text-decoration:none; }
   .ad-slot { max-width:800px; margin:16px auto; text-align:center; padding:16px; background:#181818; border-radius:8px; min-height:100px; overflow:hidden; }
@@ -46,16 +47,76 @@ export async function onRequest(context) {
   <a class="back" href="/">&larr; All Videos</a>
   <h1>${video.title}</h1>
   <p>${video.channel_title}</p>
-  <iframe id="videoFrame" src="https://www.youtube.com/embed/${videoId}" allowfullscreen loading="lazy"></iframe>
+  
+  <!-- Player Container with Overlay support for Smart Link Ad -->
+  <div id="player-container">
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/${videoId}" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <!-- Video ke niche wala Banner Ad Slot (2 seconds baad load hoga) -->
   <div class="ad-slot">
     <div id="container-4f0bfeaabac995fec9ba44ec0ea68118"></div>
-    <script async="async" data-cfasync="false" src="https://pl29064745.profitableratecpmnetwork.com/4f0bfeaabac995fec9ba44ec0ea68118/invoke.js"></script>
   </div>
 </div>
 <script>
   window.addEventListener("load", () => {
     document.getElementById("videoFrame").scrollIntoView({ behavior: "smooth", block: "center" });
   });
+
+  let adReady = false;
+  let adOpened = false;
+
+  // 10 second ke baad smart link ad activate hoga (kahin bhi click par)
+  setTimeout(function () {
+    adReady = true;
+
+    if (!adOpened) {
+      var container = document.getElementById('player-container');
+      if (container) {
+        var overlay = document.createElement('div');
+        overlay.style.position = 'absolute';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.zIndex = '999';
+        overlay.style.background = 'transparent';
+        overlay.style.cursor = 'pointer';
+
+        overlay.addEventListener('click', function () {
+          if (adOpened) return;
+          adOpened = true;
+          window.open("https://uplcm.com/4/11282250", "_blank");
+          overlay.remove(); // Click hone par overlay hat jayega taaki user video control kar sake
+        });
+
+        container.appendChild(overlay);
+      }
+    }
+  }, 10000);
+
+  // Baaki page par kahin bhi click karne par (10 second ke baad)
+  document.addEventListener("click", function (e) {
+    if (!adReady || adOpened) return;
+    
+    var container = document.getElementById('player-container');
+    if (container && !container.contains(e.target)) {
+      adOpened = true;
+      window.open("https://uplcm.com/4/11282250", "_blank");
+    }
+  });
+
+  // Video ke niche wala ad page load hone ke 2 second baad load hoga
+  setTimeout(function () {
+    var slot = document.getElementById('container-4f0bfeaabac995fec9ba44ec0ea68118');
+    if (slot) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.dataset.cfasync = "false";
+      s.src = "https://pl29064745.profitableratecpmnetwork.com/4f0bfeaabac995fec9ba44ec0ea68118/invoke.js";
+      slot.appendChild(s);
+    }
+  }, 2000);
 </script>
 </body>
 </html>`;

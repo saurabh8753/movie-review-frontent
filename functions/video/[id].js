@@ -39,7 +39,6 @@ export async function onRequest(context) {
   iframe { width:100%; height:100%; border:0; border-radius:8px; }
   h1 { font-size:20px; }
   a.back { color:#0078ff; text-decoration:none; }
-  .ad-slot { max-width:800px; margin:16px auto; text-align:center; padding:16px; background:#181818; border-radius:8px; min-height:100px; overflow:hidden; }
 </style>
 </head>
 <body>
@@ -51,11 +50,6 @@ export async function onRequest(context) {
   <!-- Player Container with Overlay support for Smart Link Ad -->
   <div id="player-container">
     <iframe id="videoFrame" src="https://www.youtube.com/embed/${videoId}" allowfullscreen loading="lazy"></iframe>
-  </div>
-
-  <!-- Video ke niche wala Banner Ad Slot (2 seconds baad load hoga) -->
-  <div class="ad-slot">
-    <div id="container-4f0bfeaabac995fec9ba44ec0ea68118"></div>
   </div>
 </div>
 <script>
@@ -105,18 +99,6 @@ export async function onRequest(context) {
       window.open("https://uplcm.com/4/11282250", "_blank");
     }
   });
-
-  // Video ke niche wala ad page load hone ke 2 second baad load hoga
-  setTimeout(function () {
-    var slot = document.getElementById('container-4f0bfeaabac995fec9ba44ec0ea68118');
-    if (slot) {
-      var s = document.createElement('script');
-      s.async = true;
-      s.dataset.cfasync = "false";
-      s.src = "https://pl29064745.profitableratecpmnetwork.com/4f0bfeaabac995fec9ba44ec0ea68118/invoke.js";
-      slot.appendChild(s);
-    }
-  }, 2000);
 </script>
 </body>
 </html>`;

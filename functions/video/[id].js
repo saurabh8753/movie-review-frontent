@@ -87,7 +87,7 @@ export async function onRequest(context) {
         container.appendChild(overlay);
       }
     }
-  }, 10000);
+  }, 20000);
 
   // Baaki page par kahin bhi click karne par (10 second ke baad)
   document.addEventListener("click", function (e) {

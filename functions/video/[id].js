@@ -155,7 +155,7 @@ export async function onRequest(context) {
     // Ad ko video ke niche wale container mein load karo
     adContainer.appendChild(adScript);
 
-  }, 2000);
+  }, 5000);
 </script>
 
 </body>
